@@ -7,9 +7,13 @@ use DB;
 
 class UserController extends Controller
 {
-    public function show($id)
+    public function show($name)
     {
-        return 'UserID ' . $id;
+        $user = DB::table('users')->where('name', $name)->first();
+
+        //dd($user);
+
+        return view('users', ['user' => $user]);
     }
 
     public function saluda()
